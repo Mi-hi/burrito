@@ -1,0 +1,82 @@
+return (
+    <div className="App">
+      {papa.map((movie)=>(
+        <Movie />
+      ))}
+    </div>
+  );
+}
+
+export default App;
+
+return (
+    <div>
+        {papa.map((movie)=>(
+        <Movie />
+        ))}
+    </div>
+);
+  /*
+import React, { useEffect, useState } from "react";
+import Movie from "./components/Movie";
+import './App.css';
+
+const BASE_URL = "https://api.themoviedb.org/3"
+const API_KEY = "api_key=04c35731a5ee918f014970082a0088b1"
+const FEATURED_API = BASE_URL + "/discover/movie?sort_by=popularity.desc&page=1&" + API_KEY;
+const IMG_API = "https://image.tmdb.org/t/p/w1280";
+const SEARCH_API = BASE_URL + "/search/movie?" + API_KEY
+
+const App =()=> {
+const [papa,setPapa] = useState([]);
+
+useEffect (()=>{
+fetch (FEATURED_API)
+.then((res)=>res.json())
+.then((data)=> {
+console.log(data);
+setPapa(data.results);
+});
+}, []);
+
+return (
+<div className="App">
+    {papa.map((movie)=>(
+    <Movie />
+    ))}
+</div>
+);
+}
+
+export default App;
+
+*/ 
+
+
+import React, {useState, useEffect} from "react";
+import Movie from "./components/Movie";
+import "./App.css"; 
+
+const App =()=> {
+const [papa, setPapa] = useState ([]);
+
+useEffect (()=> {
+    fetch (FEATURED_API)
+    .then((res)=> res.json())
+    .then((data)=> {
+        console.log(data);
+        setPapa(data.results);
+    });
+}, []);
+}
+
+8-47 am 
+
+useEffect  (()=> {
+  fetch(FEATURED_API)
+  .then((res)=> res.jjson())
+  .then((data)=> {
+    console.log(data);
+    setPapa(data.results);
+  });
+}, []);
