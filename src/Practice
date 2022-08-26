@@ -71,7 +71,7 @@ useEffect (()=> {
 }
 
 8-47 am 
-
+jgfhgf
 useEffect  (()=> {
   fetch(FEATURED_API)
   .then((res)=> res.jjson())

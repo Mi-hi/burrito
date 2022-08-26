@@ -9,6 +9,7 @@ const SEARCH_API = BASE_URL + "/search/movie?" + API_KEY
 
 const App =()=> {
   const [papa,setPapa] = useState([]);
+  const[searchTerm,setSearchTerm]= useState([]);
 
   useEffect (()=>{
     fetch (FEATURED_API)
@@ -19,12 +20,39 @@ const App =()=> {
   });
   }, []);
 
+  const handleOnSubmit = (e) => {
+      e.preventDefault();
+
+     fetch(SEARCH_API + searchTerm)
+    .then((res) => res.json())
+    .then((data) => {
+      setPapa(data.results);
+    });
+};
+
+  const handleOnChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  
   return (
-    <div className="movie-container">
-      {papa.length > 0 && papa.map((Movie)
-      , <Movie key={Movie.id} {...Movie} />
-      )}
-    </div>
+    <>
+        <header>
+          <form onSubmit={handleOnSubmit}>
+          <input 
+              className="search"
+              type="search"
+              placeholder="Search away..."
+              value={searchTerm}
+              onChange={handleOnChange}
+          />
+        </form>
+        </header>
+          <div className="movie-container">
+            {papa.length > 0 && papa.map((Movie)
+            , <Movie key={Movie.id} {...Movie} />
+            )}
+          </div>
+    </>
   );
 }
 
